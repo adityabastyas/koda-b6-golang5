@@ -1,8 +1,11 @@
 package menu
 
-import "fmt"
+import (
+	"fmt"
+	"koda-b6-golang5/service"
+)
 
-func ShowMenu() {
+func ShowMenu(auth service.AuthService) {
 	for {
 		fmt.Println("\n--- Welcome to System ---")
 		fmt.Println("1. Register")
@@ -16,8 +19,21 @@ func ShowMenu() {
 
 		switch code {
 		case "1":
-			fmt.Println("test")
+			var firstName, lastName, email, password string
 
+			fmt.Print("First Name: ")
+			fmt.Scanln(&firstName)
+
+			fmt.Print("Last Name: ")
+			fmt.Scanln(&lastName)
+
+			fmt.Print("Email: ")
+			fmt.Scanln(&email)
+
+			fmt.Print("Password: ")
+			fmt.Scanln(&password)
+
+			auth.Register(firstName, lastName, email, password)
 		}
 	}
 }
