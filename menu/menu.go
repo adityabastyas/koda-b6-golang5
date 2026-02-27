@@ -34,6 +34,32 @@ func ShowMenu(auth service.AuthService) {
 			fmt.Scanln(&password)
 
 			auth.Register(firstName, lastName, email, password)
+
+		case "2":
+			var email, password string
+
+			fmt.Print("Email: ")
+			fmt.Scanln(&email)
+
+			fmt.Print("Password: ")
+			fmt.Scanln(&password)
+
+			auth.Login(email, password)
+
+		case "3":
+			var email, newPassword string
+
+			fmt.Print("Email: ")
+			fmt.Scanln(&email)
+
+			fmt.Print("Password baru: ")
+			fmt.Scanln(&newPassword)
+
+			auth.ForgotPassword(email, newPassword)
+
+		case "0":
+			fmt.Println("Terimakasih")
+			return
 		}
 	}
 }
